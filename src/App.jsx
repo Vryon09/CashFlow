@@ -8,7 +8,7 @@ function App() {
       <ItemsProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<MainScreen />} />
+            <Route path="/CashFlow" element={<MainScreen />} />
           </Routes>
         </BrowserRouter>
       </ItemsProvider>
