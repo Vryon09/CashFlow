@@ -1,0 +1,24 @@
+.itemActions {
+  display: flex;
+  align-items: baseline;
+  padding: 0.5em 1em;
+  gap: 0.5em;
+}
+
+.itemActions button {
+  font-size: 1rem;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.remove {
+  background-color: hsl(0, 80%, 50%);
+  border: 1px solid hsl(0, 80%, 50%);
+  color: white;
+}
+
+.change {
+  background-color: hsl(210, 70%, 50%);
+  border: 1px solid hsl(210, 70%, 50%);
+  color: white;
+}

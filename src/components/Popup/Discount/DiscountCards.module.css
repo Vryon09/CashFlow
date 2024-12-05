@@ -1,0 +1,17 @@
+.discountCards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+}
+
+.card {
+  padding: 1em;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #333a45;
+  color: white;
+  border: 1px solid #333a45;
+}

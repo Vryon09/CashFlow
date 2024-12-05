@@ -1,0 +1,10 @@
+.searchResults {
+  padding: 1em;
+  width: 70%;
+  height: 90dvh;
+  overflow: scroll;
+}
+
+.results {
+  list-style: none;
+}

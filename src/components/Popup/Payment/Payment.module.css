@@ -1,0 +1,11 @@
+.payment {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+}

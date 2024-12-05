@@ -1,0 +1,29 @@
+.itemList {
+  border: 1px solid black;
+  min-height: 60dvh;
+  border-radius: 0.5em;
+}
+
+.labels {
+  padding: 0;
+  display: flex;
+  list-style: none;
+  border-bottom: 1px solid black;
+}
+
+.labels > * {
+  width: 20%;
+  padding: 0.5em;
+}
+
+.labels > *:not(:last-child) {
+  border-right: 1px solid black; /* Customize the border style and color */
+}
+
+.name {
+  width: 40%;
+}
+
+.scannedItems {
+  list-style: none;
+}

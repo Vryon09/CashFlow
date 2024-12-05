@@ -1,0 +1,23 @@
+.itemList {
+  border: 1px solid black;
+  min-height: 70dvh;
+}
+
+.description {
+  padding: 0;
+  display: flex;
+  list-style: none;
+}
+
+.description > * {
+  width: 20%;
+  padding: 0.5em;
+}
+
+.name {
+  width: 40%;
+}
+
+.selected {
+  background-color: hsl(0, 0%, 85%);
+}

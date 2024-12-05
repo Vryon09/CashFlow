@@ -1,0 +1,7 @@
+.transactionControl {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  flex: 1;
+  gap: 1em;
+}

@@ -1,0 +1,11 @@
+.discountContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.apply {
+  float: right;
+  font-size: 1em;
+  padding: 0.5em;
+}

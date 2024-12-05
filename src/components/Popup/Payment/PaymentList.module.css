@@ -1,0 +1,30 @@
+.list > *:not(:last-child) {
+  border-bottom: 1px solid black;
+}
+
+.item {
+  padding: 0.5em;
+  display: flex;
+}
+
+.description {
+  width: 60%;
+}
+
+.amount {
+  flex: 1;
+}
+
+.button {
+  width: 10%;
+}
+
+.x {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid hsl(0, 80%, 50%);
+  background-color: hsl(0, 80%, 50%);
+  color: white;
+  font-size: 1rem;
+}
