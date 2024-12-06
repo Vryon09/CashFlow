@@ -5,14 +5,44 @@
   font-size: 1em;
 }
 
-.searchResult > * {
+.name {
+  width: 30%;
+}
+
+.code {
+  width: 25%;
+}
+
+.price {
   width: 20%;
 }
 
-.name {
-  width: 40%;
+.add {
+  padding: 0.5em;
+  flex: 1;
 }
 
-.searchResult button {
-  padding: 0.5em;
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 25%;
+}
+
+.num {
+  width: 30%;
+  font-size: 1rem;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+.quantityBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0;
+  height: 0;
+  padding: 1em;
+  font-size: 1rem;
 }

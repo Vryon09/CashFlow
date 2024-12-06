@@ -20,28 +20,38 @@ function SearchForm() {
     );
 
     if (e.key === "Enter") {
+      if (itemInput === "") {
+        dispatch({ type: "openModal", payload: "productsModal" });
+        return;
+      }
+
       if (!isValid) {
         dispatch({ type: "productSearch" });
 
         return;
       }
+
       dispatch({ type: "addItem" });
     }
   }
 
   return (
-    <form
-      className={styles.searchForm}
-      onSubmit={handleSubmit}
-      onKeyDown={handleEnter}
-    >
+    <div className={styles.searchForm} onKeyDown={handleEnter}>
       <input
         type="text"
         className={styles.itemSearchInput}
         value={itemInput}
         onChange={handleInput}
       />
-    </form>
+      <button
+        className={styles.btn}
+        onClick={() =>
+          dispatch({ type: "openModal", payload: "productsModal" })
+        }
+      >
+        Products
+      </button>
+    </div>
   );
 }
 

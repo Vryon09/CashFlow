@@ -1,20 +1,24 @@
-import { useItems } from "../../contexts/ItemsContext";
 import Modal from "./Modal";
 import SearchResult from "./SearchResult";
 import styles from "./SearchResults.module.css";
 
-function SearchResults() {
-  const { searchResults } = useItems();
-
+function SearchResults({ list }) {
   return (
     <Modal closing="closeSearchModal" style={styles.searchResults}>
-      <h2>Search Results:</h2>
+      <div className={styles.header}>
+        <h2>Search Results:</h2>
 
-      {searchResults.length === 0 ? (
+        <div className={styles.quantity}>
+          <label>Quantity: </label>
+          <input type="number" className={styles.quantityInput} />
+        </div>
+      </div>
+
+      {list.length === 0 ? (
         <p>No items found.</p>
       ) : (
         <ul className={styles.results}>
-          {searchResults.map((item, i) => (
+          {list.map((item, i) => (
             <SearchResult
               name={item.productName}
               code={item.code}

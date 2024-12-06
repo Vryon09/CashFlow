@@ -10,7 +10,7 @@ function ActionButtons() {
   }
 
   function handleSuspend() {
-    if (scannedItems.length > 0 && suspendedTransaction.length === 0) {
+    if (scannedItems.length > 0 || suspendedTransaction.length === 0) {
       dispatch({ type: "suspendTransaction" });
       return;
     }

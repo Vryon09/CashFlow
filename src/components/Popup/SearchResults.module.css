@@ -5,6 +5,23 @@
   overflow: scroll;
 }
 
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
 .results {
   list-style: none;
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.quantityInput {
+  font-size: 1rem;
+  padding: 0.5em;
+  text-align: center;
 }

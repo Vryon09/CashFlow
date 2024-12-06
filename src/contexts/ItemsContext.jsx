@@ -39,8 +39,6 @@ function reducer(state, action) {
   );
 
   function addItem() {
-    if (itemInput === "") return;
-
     const selectedSearchedItem = products.find(
       (product) => product.code === action.payload
     );
@@ -55,7 +53,7 @@ function reducer(state, action) {
       );
     }
 
-    if (searchResults.length > 0) {
+    if (searchResults.length > 0 || itemInput === "") {
       console.log("search");
       return {
         ...state,

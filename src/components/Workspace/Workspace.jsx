@@ -9,7 +9,7 @@ import TransactionControl from "../TransactionComponents/TransactionControl";
 import styles from "./Workspace.module.css";
 
 function Workspace() {
-  const { selectedItem, products, openedModal } = useItems();
+  const { selectedItem, products, openedModal, searchResults } = useItems();
 
   const itemSelected = products.find((item) => selectedItem === item.code);
 
@@ -20,7 +20,8 @@ function Workspace() {
       {openedModal === "quantityModal" && (
         <QuantityModal productName={itemSelected.productName} />
       )}
-      {openedModal === "searchModal" && <SearchResults />}
+      {openedModal === "searchModal" && <SearchResults list={searchResults} />}
+      {openedModal === "productsModal" && <SearchResults list={products} />}
       {openedModal === "removeConfirmation" && <RemoveConfirmation />}
       {openedModal === "paymentModal" && <Payment />}
       {openedModal === "discountModal" && <Discount />}
