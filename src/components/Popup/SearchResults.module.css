@@ -18,9 +18,10 @@
 .quantity {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5em;
+  justify-content: space-between;
+  /* gap: 0.5em; */
   font-size: 1rem;
+  width: 12%;
 }
 
 .btn {

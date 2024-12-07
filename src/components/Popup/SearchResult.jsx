@@ -8,11 +8,6 @@ function SearchResult({ name, code, price }) {
       <p className={styles.name}>{name}</p>
       <p className={styles.code}>{code}</p>
       <p className={styles.price}>${price}</p>
-      {/* <div className={styles.quantity}>
-        <button className={styles.quantityBtn}>-</button>
-        <p className={styles.num}>1</p>
-        <button className={styles.quantityBtn}>+</button>
-      </div> */}
       <button
         onClick={() => dispatch({ type: "addItem", payload: code })}
         className={styles.add}

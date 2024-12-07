@@ -16,7 +16,8 @@ const initialState = {
   selectedDiscount: null,
   appliedDiscount: null,
   discounts: initialDiscounts,
-  suspendedTransaction: [],
+  suspendedTransaction: {},
+  initialQuantity: 1,
 };
 
 function reducer(state, action) {
@@ -30,6 +31,7 @@ function reducer(state, action) {
     selectedDiscount,
     appliedDiscount,
     suspendedTransaction,
+    initialQuantity,
   } = state;
 
   const newScannedItem = products.find(
@@ -49,37 +51,28 @@ function reducer(state, action) {
 
     function updatedItem(code) {
       return scannedItems.map((item) =>
-        item.code === code ? { ...item, quantity: item.quantity + 1 } : item
+        item.code === code
+          ? { ...item, quantity: item.quantity + initialQuantity }
+          : item
       );
-    }
-
-    if (searchResults.length > 0 || itemInput === "") {
-      console.log("search");
-      return {
-        ...state,
-        scannedItems: isDuplicate(action.payload)
-          ? updatedItem(action.payload)
-          : [...scannedItems, { ...selectedSearchedItem, quantity: 1 }],
-        itemInput: "",
-        searchResults: [],
-        openedModal: null,
-        selectedItem: selectedSearchedItem.code,
-        change: 0,
-        selectedDiscount: null,
-        appliedDiscount: null,
-      };
     }
 
     return {
       ...state,
-      scannedItems: isDuplicate(newScannedItem.code)
-        ? updatedItem(newScannedItem.code)
-        : [...scannedItems, { ...newScannedItem, quantity: 1 }],
+      scannedItems: isDuplicate(action.payload)
+        ? updatedItem(action.payload)
+        : [
+            ...scannedItems,
+            { ...selectedSearchedItem, quantity: initialQuantity },
+          ],
       itemInput: "",
-      selectedItem: newScannedItem.code,
+      searchResults: [],
+      openedModal: null,
+      selectedItem: selectedSearchedItem.code,
       change: 0,
       selectedDiscount: null,
       appliedDiscount: null,
+      initialQuantity: 1,
     };
   }
 
@@ -100,6 +93,8 @@ function reducer(state, action) {
       scannedItems: filteredItems,
       selectedItem: scannedItems.length === 1 ? null : newLastItem().code,
       openedModal: null,
+      appliedDiscount: null,
+      selectedDiscount: null,
     };
   }
 
@@ -185,13 +180,24 @@ function reducer(state, action) {
     case "applyDiscount":
       return applyDiscount(action.payload);
     case "suspendTransaction":
-      return { ...state, suspendedTransaction: scannedItems, scannedItems: [] };
+      return {
+        ...state,
+        suspendedTransaction: { scannedItems, appliedDiscount },
+        scannedItems: [],
+        appliedDiscount: null,
+      };
     case "resumeTransaction":
       return {
         ...state,
-        suspendedTransaction: [],
-        scannedItems: suspendedTransaction,
+        suspendedTransaction: {},
+        scannedItems: suspendedTransaction.scannedItems,
+        appliedDiscount: suspendedTransaction.appliedDiscount,
         change: 0,
+      };
+    case "changeInitialQuantity":
+      return {
+        ...state,
+        initialQuantity: initialQuantity + action.payload,
       };
     default:
       throw new Error("Unknown type");
@@ -214,6 +220,7 @@ function ItemsProvider({ children }) {
       selectedDiscount,
       appliedDiscount,
       suspendedTransaction,
+      initialQuantity,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
@@ -260,6 +267,7 @@ function ItemsProvider({ children }) {
         currentDiscount,
         rawTotal,
         suspendedTransaction,
+        initialQuantity,
       }}
     >
       {children}

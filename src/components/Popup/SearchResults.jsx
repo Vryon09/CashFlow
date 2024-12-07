@@ -1,17 +1,34 @@
+import { useItems } from "../../contexts/ItemsContext";
 import Modal from "./Modal";
 import SearchResult from "./SearchResult";
 import styles from "./SearchResults.module.css";
 
 function SearchResults({ list }) {
+  const { initialQuantity, dispatch } = useItems();
+
   return (
     <Modal closing="closeSearchModal" style={styles.searchResults}>
       <div className={styles.header}>
         <h2>Search Results:</h2>
 
         <div className={styles.quantity}>
-          <button className={styles.btn}>-</button>
-          <p>1</p>
-          <button className={styles.btn}>+</button>
+          <button
+            className={styles.btn}
+            onClick={() =>
+              dispatch({ type: "changeInitialQuantity", payload: -1 })
+            }
+          >
+            -
+          </button>
+          <p>{initialQuantity}</p>
+          <button
+            className={styles.btn}
+            onClick={() =>
+              dispatch({ type: "changeInitialQuantity", payload: 1 })
+            }
+          >
+            +
+          </button>
         </div>
       </div>
 

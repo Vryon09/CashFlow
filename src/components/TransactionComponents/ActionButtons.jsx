@@ -10,10 +10,14 @@ function ActionButtons() {
   }
 
   function handleSuspend() {
-    if (scannedItems.length > 0 || suspendedTransaction.length === 0) {
+    if (
+      scannedItems.length > 0 ||
+      suspendedTransaction.scannedItems.length === 0
+    ) {
       dispatch({ type: "suspendTransaction" });
       return;
     }
+
     dispatch({ type: "resumeTransaction" });
   }
 
@@ -33,7 +37,9 @@ function ActionButtons() {
         Discount
       </button>
       <button className={styles.default} onClick={handleSuspend}>
-        {suspendedTransaction.length > 0 ? "Resume Transaction" : "Suspend"}
+        {suspendedTransaction.scannedItems?.length > 0
+          ? "Resume Transaction"
+          : "Suspend"}
       </button>
       <button className={styles.default}>Void</button>
     </div>
