@@ -26,7 +26,6 @@ function reducer(state, action) {
     itemInput,
     selectedItem,
     quantityInput,
-    searchResults,
     paymentList,
     selectedDiscount,
     appliedDiscount,
@@ -144,6 +143,7 @@ function reducer(state, action) {
         openedModal: null,
         quantityInput: "",
         searchResults: [],
+        initialQuantity: 1,
       };
     case "setPaymentInput":
       return { ...state, paymentInput: action.payload };

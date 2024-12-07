@@ -26,6 +26,7 @@ function SearchForm() {
         className={styles.itemSearchInput}
         value={itemInput}
         onChange={handleInput}
+        placeholder="Search item"
       />
       <button
         className={styles.btn}

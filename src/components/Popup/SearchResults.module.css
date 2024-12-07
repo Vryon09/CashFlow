@@ -35,3 +35,7 @@
   border: 1px solid black;
   font-size: 1rem;
 }
+
+.noItems {
+  padding: 0 0.5em;
+}
