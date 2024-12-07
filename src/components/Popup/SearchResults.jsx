@@ -9,8 +9,9 @@ function SearchResults({ list }) {
         <h2>Search Results:</h2>
 
         <div className={styles.quantity}>
-          <label>Quantity: </label>
-          <input type="number" className={styles.quantityInput} />
+          <button className={styles.btn}>-</button>
+          <p>1</p>
+          <button className={styles.btn}>+</button>
         </div>
       </div>
 

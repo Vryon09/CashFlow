@@ -8,6 +8,7 @@
 .header {
   display: flex;
   justify-content: space-between;
+  padding: 0 0.5em;
 }
 
 .results {
@@ -17,11 +18,19 @@
 .quantity {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5em;
+  font-size: 1rem;
 }
 
-.quantityInput {
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0;
+  height: 0;
+  padding: 1em;
+  border-radius: 50%;
+  border: 1px solid black;
   font-size: 1rem;
-  padding: 0.5em;
-  text-align: center;
 }

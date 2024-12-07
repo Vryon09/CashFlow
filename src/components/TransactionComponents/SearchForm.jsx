@@ -4,10 +4,6 @@ import { useItems } from "../../contexts/ItemsContext";
 function SearchForm() {
   const { dispatch, itemInput, products } = useItems();
 
-  function handleSubmit(e) {
-    e.preventDefault();
-  }
-
   function handleInput(e) {
     dispatch({ type: "setItemInput", payload: e.target.value });
   }
