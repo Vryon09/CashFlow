@@ -15,4 +15,6 @@ export const initialState = {
   suspendedTransaction: {},
   initialQuantity: 1,
   openedModal: null,
+  supervisorCodeInput: "",
+  supervisorCode: "qwerty",
 };

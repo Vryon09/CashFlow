@@ -1,0 +1,23 @@
+.voidPermission {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.input {
+  text-align: center;
+  padding: 0.25em 0.25em;
+  font-size: 1.5rem;
+  border: 1px solid black;
+}
+
+.label {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+.btn {
+  font-size: 1.2em;
+  padding: 0.2em 0.5em;
+  border: 1px solid black;
+}

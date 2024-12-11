@@ -105,7 +105,12 @@ function reducer(state, action) {
         quantityInput: "",
         searchResults: [],
         initialQuantity: 1,
+        supervisorCodeInput: "",
       };
+    case "setSupervisorCode":
+      return { ...state, supervisorCodeInput: action.payload };
+    case "voidItems":
+      return { ...state, scannedItems: [], appliedDiscount: null };
     default:
       throw new Error("Unknown type");
   }

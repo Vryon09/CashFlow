@@ -41,9 +41,14 @@ function ActionButtons() {
           ? "Resume Transaction"
           : "Suspend"}
       </button>
-      <button className={styles.void}>Void</button>
-      <button className={styles.cancel}>Cancel Transaction</button>
-      <button className={styles.refund}>Refund</button>
+      <button
+        className={styles.void}
+        onClick={() => handleOpenModal("voidModal")}
+      >
+        Void
+      </button>
+      {/* <button className={styles.cancel}>Cancel Transaction</button>
+      <button className={styles.refund}>Refund</button> */}
     </div>
   );
 }
