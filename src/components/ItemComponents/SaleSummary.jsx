@@ -30,8 +30,10 @@ function SaleSummary() {
             </h2>
           ) : (
             <h2>
-              {" "}
-              ${rawTotal.toFixed(1)} +${vatTotal.toFixed(1)} = ${saleTotal}
+              {vatTotal === 0
+                ? ""
+                : `$${rawTotal.toFixed(1)} + $${vatTotal.toFixed(1)} =`}
+              ${saleTotal}
             </h2>
           )}
         </>
