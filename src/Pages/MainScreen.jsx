@@ -1,9 +1,10 @@
+import styles from "./MainScreen.module.css";
 import Header from "../components/HeaderComponents/Header";
 import Workspace from "../components/Workspace/Workspace";
 
 function MainScreen() {
   return (
-    <div>
+    <div className={styles.container}>
       <Header />
       <Workspace />
     </div>

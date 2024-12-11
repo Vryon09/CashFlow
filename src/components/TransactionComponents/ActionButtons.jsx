@@ -36,12 +36,14 @@ function ActionButtons() {
       >
         Discount
       </button>
-      <button className={styles.default} onClick={handleSuspend}>
+      <button className={styles.suspend} onClick={handleSuspend}>
         {suspendedTransaction.scannedItems?.length > 0
           ? "Resume Transaction"
           : "Suspend"}
       </button>
-      <button className={styles.default}>Void</button>
+      <button className={styles.void}>Void</button>
+      <button className={styles.cancel}>Cancel Transaction</button>
+      <button className={styles.refund}>Refund</button>
     </div>
   );
 }

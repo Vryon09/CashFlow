@@ -1,34 +1,49 @@
 .actionButtons {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
-  padding: 0 1em;
+  /* padding: 0 1em; */
   width: 100%;
   gap: 6px;
+  height: 90%;
 }
 
 .actionButtons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   cursor: pointer;
   border-radius: 0.5em;
   font-size: 1.2rem;
-  padding: 3em;
+  border: none;
+  color: white;
 }
 
 .pay {
   background-color: hsl(120, 80%, 45%);
-  border: 1px solid hsl(120, 80%, 45%);
-  color: white;
 }
 
 .discount {
   background-color: hsl(30, 90%, 55%);
-  border: 1px solid hsl(30, 90%, 55%);
-  color: white;
+}
+
+.suspend {
+  background-color: hsl(210, 70%, 50%);
+}
+
+.void {
+  background-color: hsl(0, 80%, 50%);
+}
+
+.cancel {
+  background-color: hsl(0, 0%, 60%);
+}
+
+.refund {
+  background-color: hsl(50, 90%, 40%);
 }
 
 .default {
   background-color: hsl(0, 0%, 15%);
-  border: hsl(0, 0%, 15%);
-  color: white;
 }

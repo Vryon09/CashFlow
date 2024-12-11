@@ -1,6 +1,7 @@
 .searchForm {
   display: flex;
   gap: 0.5em;
+  flex: 1;
 }
 
 .itemSearchInput {

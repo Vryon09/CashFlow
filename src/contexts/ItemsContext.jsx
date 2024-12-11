@@ -134,7 +134,11 @@ function ItemsProvider({ children }) {
         +`0.${state.appliedDiscount?.percentage}`
       : rawTotal * +`0.${state.appliedDiscount?.percentage}`;
 
-  const saleTotal = discount ? rawTotal - discount : rawTotal;
+  const vatTotal = rawTotal * 0.12;
+
+  const saleTotal = discount
+    ? vatTotal + rawTotal - discount
+    : vatTotal + rawTotal;
 
   return (
     <ItemsContext.Provider
@@ -144,6 +148,7 @@ function ItemsProvider({ children }) {
         currentDiscount,
         discount,
         rawTotal,
+        vatTotal,
         products,
         dispatch,
       }}
