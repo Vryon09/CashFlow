@@ -7,8 +7,10 @@ function Header() {
     <div className={styles.header}>
       <Logo />
       <div>
-        <ul>
-          <NavLink to="/Dashboard">Dashboard</NavLink>
+        <ul className={styles.menus}>
+          <li>
+            <NavLink to="/Dashboard">Dashboard</NavLink>
+          </li>
         </ul>
       </div>
       <UserProfile />

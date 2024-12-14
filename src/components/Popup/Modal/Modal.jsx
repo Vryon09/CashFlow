@@ -5,8 +5,8 @@ function Modal({ children, style, styleObject, clear }) {
   const { dispatch } = useItems();
 
   function handleBlack() {
-    clear();
     dispatch({ type: "closeModal" });
+    clear();
   }
   return (
     <>
