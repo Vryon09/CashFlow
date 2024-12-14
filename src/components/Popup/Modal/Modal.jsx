@@ -6,7 +6,7 @@ function Modal({ children, style, styleObject, clear }) {
 
   function handleBlack() {
     dispatch({ type: "closeModal" });
-    clear();
+    clear?.();
   }
   return (
     <>

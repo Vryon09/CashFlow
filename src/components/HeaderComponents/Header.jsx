@@ -6,13 +6,23 @@ function Header() {
   return (
     <div className={styles.header}>
       <Logo />
-      <div>
-        <ul className={styles.menus}>
-          <li>
-            <NavLink to="/Dashboard">Dashboard</NavLink>
-          </li>
-        </ul>
-      </div>
+      <ul className={styles.menus}>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Dashboard">Dashboard</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Inventory">Inventory</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Reports">Reports</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Settings">Settings</NavLink>
+        </li>
+      </ul>
       <UserProfile />
     </div>
   );
