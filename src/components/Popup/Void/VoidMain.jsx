@@ -13,14 +13,14 @@ function VoidMain() {
     <div className={styles.voidMain}>
       <h3 className={styles.h3}>Are you sure you want to void this sale?</h3>
       <div className={styles.buttons}>
-        <button className={styles.btn} onClick={handleYes}>
-          Yes
-        </button>
         <button
           className={styles.btn}
           onClick={() => dispatch({ type: "closeModal" })}
         >
           No
+        </button>
+        <button className={styles.btn} onClick={handleYes}>
+          Yes
         </button>
       </div>
     </div>

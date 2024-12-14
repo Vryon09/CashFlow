@@ -1,4 +1,4 @@
-import Modal from "../Modal";
+import Modal from "../Modal/Modal";
 import styles from "./Payment.module.css";
 import PaymentButtons from "./PaymentButtons";
 import PaymentForm from "./PaymentForm";

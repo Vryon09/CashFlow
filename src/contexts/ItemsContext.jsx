@@ -18,6 +18,8 @@ function reducer(state, action) {
     appliedDiscount,
     suspendedTransaction,
     initialQuantity,
+    previousTransactions,
+    selectedItem,
   } = state;
 
   //The discount should be in the context not in the ui logic, it can't be use in other components if it is not a state
@@ -58,10 +60,14 @@ function reducer(state, action) {
     case "proceedPayment":
       return {
         ...state,
-        scannedItems: [],
+        // scannedItems: [],
         change: action.payload,
         paymentList: [],
-        selectedItem: null,
+        // selectedItem: null,
+        previousTransactions: [
+          ...previousTransactions,
+          { scannedItems, appliedDiscount, selectedItem },
+        ],
       };
     case "deletePayment":
       return {
@@ -107,6 +113,8 @@ function reducer(state, action) {
         initialQuantity: 1,
         supervisorCodeInput: "",
       };
+    case "clear":
+      return { ...state, selectedItem: null, scannedItems: [] };
     case "setSupervisorCode":
       return { ...state, supervisorCodeInput: action.payload };
     case "voidItems":

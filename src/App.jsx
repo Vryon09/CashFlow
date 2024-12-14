@@ -1,14 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MainScreen from "./Pages/MainScreen";
 import { ItemsProvider } from "./contexts/ItemsContext";
+import Dashboard from "./Pages/Dashboard";
 
 function App() {
   return (
     <div>
       <ItemsProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/CashFlow/">
           <Routes>
-            <Route path="/CashFlow" element={<MainScreen />} />
+            <Route index element={<MainScreen />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
       </ItemsProvider>

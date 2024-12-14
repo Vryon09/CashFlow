@@ -17,4 +17,5 @@ export const initialState = {
   openedModal: null,
   supervisorCodeInput: "",
   supervisorCode: "qwerty",
+  previousTransactions: [],
 };

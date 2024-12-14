@@ -1,5 +1,5 @@
-import { useItems } from "../../contexts/ItemsContext";
-import Modal from "./Modal";
+import { useItems } from "../../../contexts/ItemsContext";
+import Modal from "../Modal/Modal";
 import SearchResult from "./SearchResult";
 import styles from "./SearchResults.module.css";
 

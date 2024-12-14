@@ -1,10 +1,11 @@
+import { NavLink } from "react-router-dom";
 import styles from "./Logo.module.css";
 
 function Logo() {
   return (
-    <div className={styles.logo}>
+    <NavLink className={styles.logo} to="/">
       <h1>CashFlow</h1>
-    </div>
+    </NavLink>
   );
 }
 

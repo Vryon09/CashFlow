@@ -1,8 +1,7 @@
 function UserProfile() {
   return (
     <div>
-      <p>Image</p>
-      <p>Vryon Antonio</p>
+      <p>User: Vryon Antonio</p>
     </div>
   );
 }

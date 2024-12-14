@@ -1,5 +1,5 @@
-import { useItems } from "../../contexts/ItemsContext";
-import Modal from "./Modal";
+import { useItems } from "../../../contexts/ItemsContext";
+import Modal from "../Modal/Modal";
 import styles from "./RemoveConfirmation.module.css";
 
 function RemoveConfirmation() {

@@ -1,8 +1,7 @@
 import { useItems } from "../../contexts/ItemsContext";
 import styles from "./SaleSummary.module.css";
 function SaleSummary() {
-  const { change, appliedDiscount, saleTotal, discount, rawTotal, vatTotal } =
-    useItems();
+  const { change, appliedDiscount, saleTotal, discount, vatTotal } = useItems();
 
   return (
     <div className={styles.saleSummary}>

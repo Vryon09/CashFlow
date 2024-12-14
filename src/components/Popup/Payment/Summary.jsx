@@ -22,7 +22,7 @@ function Summary() {
       type: "proceedPayment",
       payload: remaining < 0 ? Math.abs(remaining) : 0,
     });
-    dispatch({ type: "closeModal" });
+    dispatch({ type: "openModal", payload: "receiptModal" });
   }
 
   return (

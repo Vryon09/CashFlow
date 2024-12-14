@@ -1,5 +1,5 @@
 import { useItems } from "../../../contexts/ItemsContext";
-import Modal from "../Modal";
+import Modal from "../Modal/Modal";
 import styles from "./Discount.module.css";
 import DiscountCards from "./DiscountCards";
 

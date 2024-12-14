@@ -2,9 +2,10 @@ import { useItems } from "../../contexts/ItemsContext";
 import ItemContainer from "../ItemComponents/ItemContainer";
 import Discount from "../Popup/Discount/Discount";
 import Payment from "../Popup/Payment/Payment";
-import QuantityModal from "../Popup/QuantityModal";
-import RemoveConfirmation from "../Popup/RemoveConfirmation";
-import SearchResults from "../Popup/SearchResults";
+import QuantityModal from "../Popup/Quantity/QuantityModal";
+import Receipt from "../Popup/Receipt/Receipt";
+import RemoveConfirmation from "../Popup/Remove/RemoveConfirmation";
+import SearchResults from "../Popup/Search/SearchResults";
 import Void from "../Popup/Void/Void";
 import TransactionControl from "../TransactionComponents/TransactionControl";
 import styles from "./Workspace.module.css";
@@ -27,6 +28,8 @@ function Workspace() {
       {openedModal === "paymentModal" && <Payment />}
       {openedModal === "discountModal" && <Discount />}
       {openedModal === "voidModal" && <Void />}
+      {openedModal === "receiptModal" && <Receipt />}
+      {/* <Receipt /> */}
     </div>
   );
 }

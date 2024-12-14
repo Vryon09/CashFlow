@@ -1,4 +1,4 @@
-import { useItems } from "../../contexts/ItemsContext";
+import { useItems } from "../../../contexts/ItemsContext";
 import styles from "./SearchResult.module.css";
 function SearchResult({ name, code, price }) {
   const { dispatch } = useItems();
