@@ -73,11 +73,19 @@ function changeQuantity(state) {
   };
 }
 
-function productSearch(state) {
-  const result = products.filter((item) =>
+function productCategorized(category) {
+  if (category === "All") return products;
+  const categorized = products.filter(
+    (product) => category === product.category
+  );
+  return categorized;
+}
+
+function productSearch(state, category) {
+  const result = productCategorized(category).filter((item) =>
     item.productName.toLowerCase().includes(state.itemInput.toLowerCase())
   );
-  return { ...state, searchResults: result, openedModal: "searchModal" };
+  return { ...state, searchResults: result };
 }
 
 export { addItem, removeItem, changeQuantity, productSearch };

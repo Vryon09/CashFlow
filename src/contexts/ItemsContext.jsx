@@ -20,6 +20,7 @@ function reducer(state, action) {
     initialQuantity,
     previousTransactions,
     selectedItem,
+    selectedCategory,
   } = state;
 
   //The discount should be in the context not in the ui logic, it can't be use in other components if it is not a state
@@ -44,7 +45,7 @@ function reducer(state, action) {
     case "setQuantityInput":
       return { ...state, quantityInput: action.payload };
     case "productSearch":
-      return productSearch(state);
+      return productSearch(state, selectedCategory);
     //PAYMENT
     case "setPaymentInput":
       return { ...state, paymentInput: action.payload };
@@ -112,6 +113,8 @@ function reducer(state, action) {
         searchResults: [],
         initialQuantity: 1,
         supervisorCodeInput: "",
+        selectedCategory: "All",
+        itemInput: "",
       };
     case "clear":
       return { ...state, selectedItem: null, scannedItems: [] };
@@ -119,6 +122,8 @@ function reducer(state, action) {
       return { ...state, supervisorCodeInput: action.payload };
     case "voidItems":
       return { ...state, scannedItems: [], appliedDiscount: null };
+    case "setSelectedCategory":
+      return { ...state, selectedCategory: action.payload };
     default:
       throw new Error("Unknown type");
   }

@@ -18,4 +18,5 @@ export const initialState = {
   supervisorCodeInput: "",
   supervisorCode: "qwerty",
   previousTransactions: [],
+  selectedCategory: "All",
 };

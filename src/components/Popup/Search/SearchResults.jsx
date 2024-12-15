@@ -9,12 +9,36 @@ const style = {
   height: "90dvh",
 };
 
+const productCategories = [
+  "All",
+  "Fruits",
+  "Dairy",
+  "Bakery",
+  "Grains",
+  "Baking Supplies",
+  "Beverages",
+  "Spreads",
+  "Snacks",
+  "Pantry",
+  "Meat",
+  "Frozen Foods",
+  "Condiments",
+  "Personal Care",
+  "Household",
+  "Canned Goods",
+  "Ready Meals",
+];
+
 function SearchResults({ list }) {
-  const { initialQuantity, dispatch } = useItems();
+  const { initialQuantity, dispatch, selectedCategory } = useItems();
 
   function handleDec() {
     if (initialQuantity === 1) return;
     dispatch({ type: "changeInitialQuantity", payload: -1 });
+  }
+
+  function handleCategory(e) {
+    dispatch({ type: "setSelectedCategory", payload: e.target.value });
   }
 
   return (
@@ -22,6 +46,16 @@ function SearchResults({ list }) {
       <div className={styles.container}>
         <div className={styles.header}>
           <h2>Search Results:</h2>
+
+          <div>
+            <select value={selectedCategory} onChange={handleCategory}>
+              {productCategories.map((cat, i) => (
+                <option value={cat} key={i}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+          </div>
 
           <div className={styles.quantity}>
             <button className={styles.btn} onClick={handleDec}>
