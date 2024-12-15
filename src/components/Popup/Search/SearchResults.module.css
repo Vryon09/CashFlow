@@ -1,8 +1,8 @@
-.searchResults {
-  padding: 1em;
-  width: 70%;
-  height: 90dvh;
-  overflow: scroll;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  height: 100%;
 }
 
 .header {
@@ -11,17 +11,22 @@
   padding: 0 0.5em;
 }
 
-.results {
-  list-style: none;
-}
-
 .quantity {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* gap: 0.5em; */
   font-size: 1rem;
   width: 12%;
+}
+
+.searchResults {
+  flex: 1;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.results {
+  list-style: none;
 }
 
 .btn {
