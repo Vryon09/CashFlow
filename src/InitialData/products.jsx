@@ -370,4 +370,17 @@ export const products = [
     price: 69.0,
     category: "Ready Meals",
   },
+
+  {
+    productName: "Royal",
+    code: "ROY075",
+    price: 15.0,
+    category: "Beverages",
+  },
+  {
+    productName: "Twisters",
+    code: "TWI076",
+    price: 5.0,
+    category: "Snacks",
+  },
 ];

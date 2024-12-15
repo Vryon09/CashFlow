@@ -47,29 +47,31 @@ function SearchResults({ list }) {
         <div className={styles.header}>
           <h2>Search Results:</h2>
 
-          <div>
-            <select value={selectedCategory} onChange={handleCategory}>
-              {productCategories.map((cat, i) => (
-                <option value={cat} key={i}>
-                  {cat}
-                </option>
-              ))}
-            </select>
-          </div>
+          <div className={styles.right}>
+            <div className={styles.filter}>
+              <select value={selectedCategory} onChange={handleCategory}>
+                {productCategories.map((cat, i) => (
+                  <option value={cat} key={i}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div className={styles.quantity}>
-            <button className={styles.btn} onClick={handleDec}>
-              -
-            </button>
-            <p>{initialQuantity}</p>
-            <button
-              className={styles.btn}
-              onClick={() =>
-                dispatch({ type: "changeInitialQuantity", payload: 1 })
-              }
-            >
-              +
-            </button>
+            <div className={styles.quantity}>
+              <button className={styles.btn} onClick={handleDec}>
+                -
+              </button>
+              <p>{initialQuantity}</p>
+              <button
+                className={styles.btn}
+                onClick={() =>
+                  dispatch({ type: "changeInitialQuantity", payload: 1 })
+                }
+              >
+                +
+              </button>
+            </div>
           </div>
         </div>
 
