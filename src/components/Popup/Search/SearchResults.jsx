@@ -91,6 +91,14 @@ function SearchResults({ list }) {
             </ul>
           )}
         </div>
+        <div className={styles.proceedContainer}>
+          <button
+            className={styles.proceed}
+            onClick={() => dispatch({ type: "closeModal" })}
+          >
+            Finish
+          </button>
+        </div>
       </div>
     </Modal>
   );
