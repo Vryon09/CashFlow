@@ -22,6 +22,7 @@ function Summary() {
       type: "proceedPayment",
       payload: remaining < 0 ? Math.abs(remaining) : 0,
     });
+    dispatch({ type: "updateStocks" });
     dispatch({ type: "openModal", payload: "receiptModal" });
   }
 

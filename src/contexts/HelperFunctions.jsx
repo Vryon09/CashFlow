@@ -89,7 +89,15 @@ function productSearch(state, category) {
 }
 
 function handleStocks(state) {
-  return { ...state };
+  const updatedProducts = state.products.map((product) => {
+    const curr = state.scannedItems.find((item) => item.code === product.code);
+
+    return curr
+      ? { ...product, currentStock: product.currentStock - curr.quantity }
+      : product;
+  });
+
+  return { ...state, products: updatedProducts };
 }
 
 export { addItem, removeItem, changeQuantity, productSearch, handleStocks };

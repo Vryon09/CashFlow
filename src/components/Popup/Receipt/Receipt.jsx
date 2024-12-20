@@ -12,7 +12,6 @@ function Receipt() {
 
   function clear() {
     dispatch({ type: "clear" });
-    dispatch({ type: "updateStocks" });
   }
 
   return (

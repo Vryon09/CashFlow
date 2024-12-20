@@ -1,0 +1,85 @@
+.product {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Styling the progress element */
+.progress {
+  width: 100%; /* Full width of the container */
+  height: 10px; /* Set the height of the progress bar */
+  border-radius: 5px; /* Rounded corners */
+  background-color: hsl(0, 0%, 90%); /* Light gray background */
+  appearance: none; /* Remove default browser appearance */
+}
+
+/* Styling the progress value (the filled part) */
+.progress::-webkit-progress-bar {
+  background-color: hsl(0, 0%, 90%); /* Background color of the progress bar */
+  border-radius: 5px; /* Rounded corners */
+}
+
+.progress::-webkit-progress-value {
+  border-radius: 5px; /* Rounded corners for the filled portion */
+}
+
+.progress::-moz-progress-bar {
+  background-color: hsl(120, 80%, 45%);
+  border-radius: 5px; /* Rounded corners for the filled portion */
+}
+
+.full::-webkit-progress-value {
+  background-color: hsl(210, 70%, 50%);
+}
+
+.full::-moz-progress-bar {
+  background-color: hsl(210, 70%, 50%);
+}
+
+.ideal::-webkit-progress-value {
+  background-color: hsl(120, 80%, 45%);
+}
+
+.ideal::-moz-progress-bar {
+  background-color: hsl(120, 80%, 45%);
+}
+
+.reorder::-webkit-progress-value {
+  background-color: hsl(30, 90%, 55%);
+}
+
+.reorder::-moz-progress-bar {
+  background-color: hsl(30, 90%, 55%);
+}
+
+.critical::-webkit-progress-value {
+  background-color: hsl(0, 80%, 50%);
+}
+
+.critical::-moz-progress-bar {
+  background-color: hsl(0, 80%, 50%);
+}
+
+.out::-webkit-progress-bar {
+  background-color: hsl(0, 80%, 50%);
+  border-radius: 5px; /* Rounded corners */
+}
+
+.name {
+  width: 40%;
+  font-weight: 400;
+}
+
+.price {
+  width: 30%;
+}
+
+.stock {
+  flex: 1;
+}
+
+.stockContainer {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.5em;
+}

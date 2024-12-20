@@ -11,41 +11,15 @@
   list-style: none;
 }
 
-.product {
+.header {
   display: flex;
   justify-content: space-between;
+  font-size: 1.2rem;
+  padding: 0.5em 0;
 }
-
-/* Styling the progress element */
-.progress {
-  width: 150px; /* Full width of the container */
-  height: 10px; /* Set the height of the progress bar */
-  border-radius: 5px; /* Rounded corners */
-  background-color: hsl(0, 0%, 90%); /* Light gray background */
-  appearance: none; /* Remove default browser appearance */
-}
-
-/* Styling the progress value (the filled part) */
-.progress::-webkit-progress-bar {
-  background-color: hsl(0, 0%, 90%); /* Background color of the progress bar */
-  border-radius: 5px; /* Rounded corners */
-}
-
-.progress::-webkit-progress-value {
-  background-color: hsl(120, 80%, 45%);
-  border-radius: 5px; /* Rounded corners for the filled portion */
-}
-
-.progress::-moz-progress-bar {
-  background-color: hsl(120, 80%, 45%);
-  border-radius: 5px; /* Rounded corners for the filled portion */
-}
-
-/* background-color: hsl(30, 90%, 55%); */
-/* background-color: hsl(0, 80%, 50%); */
 
 .name {
-  width: 50%;
+  width: 40%;
 }
 
 .price {
@@ -54,8 +28,11 @@
 
 .stock {
   flex: 1;
+}
+
+.stockContainer {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  align-items: end;
   gap: 0.5em;
 }
