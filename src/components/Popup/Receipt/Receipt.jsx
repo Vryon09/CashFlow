@@ -12,10 +12,11 @@ function Receipt() {
 
   function clear() {
     dispatch({ type: "clear" });
+    dispatch({ type: "updateStocks" });
   }
 
   return (
-    <Modal styleObject={style} clear={clear}>
+    <Modal styleObject={style} clear={clear} style={styles.addedStyle}>
       <div className={styles.container}>
         <h2>Payment Success</h2>
         <ul className={styles.list}>

@@ -1,11 +1,11 @@
 import { useContext, createContext, useReducer } from "react";
-import { products } from "../InitialData/products";
 import { initialState } from "../InitialData/InitialState";
 import {
   addItem,
   removeItem,
   changeQuantity,
   productSearch,
+  handleStocks,
 } from "./HelperFunctions";
 
 const ItemsContext = createContext();
@@ -124,6 +124,8 @@ function reducer(state, action) {
       return { ...state, scannedItems: [], appliedDiscount: null };
     case "setSelectedCategory":
       return { ...state, selectedCategory: action.payload };
+    case "updateStocks":
+      return handleStocks(state);
     default:
       throw new Error("Unknown type");
   }
@@ -167,7 +169,6 @@ function ItemsProvider({ children }) {
         discount,
         rawTotal,
         vatTotal,
-        products,
         dispatch,
       }}
     >

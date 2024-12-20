@@ -96,7 +96,7 @@ function SearchResults({ list }) {
             className={styles.proceed}
             onClick={() => dispatch({ type: "closeModal" })}
           >
-            Finish
+            Back
           </button>
         </div>
       </div>

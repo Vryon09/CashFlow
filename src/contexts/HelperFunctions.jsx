@@ -88,4 +88,8 @@ function productSearch(state, category) {
   return { ...state, searchResults: result };
 }
 
-export { addItem, removeItem, changeQuantity, productSearch };
+function handleStocks(state) {
+  return { ...state };
+}
+
+export { addItem, removeItem, changeQuantity, productSearch, handleStocks };

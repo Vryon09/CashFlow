@@ -1,6 +1,8 @@
 import { initialDiscounts } from "./initialDiscounts";
+import { products } from "./products";
 
 export const initialState = {
+  products,
   scannedItems: [],
   itemInput: "",
   quantityInput: "",

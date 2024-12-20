@@ -26,4 +26,6 @@
 
 .scannedItems {
   list-style: none;
+  max-height: 50dvh;
+  overflow: auto;
 }
