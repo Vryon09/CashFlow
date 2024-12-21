@@ -1,6 +1,6 @@
 import styles from "./InventoryItems.module.css";
 
-function InventoryItems({ item, i }) {
+function InventoryItems({ item }) {
   const level = (item.currentStock / item.stock) * 100;
 
   function stockLevel() {
@@ -12,7 +12,7 @@ function InventoryItems({ item, i }) {
   }
 
   return (
-    <li className={styles.product} key={i}>
+    <li className={styles.product}>
       <h2 className={styles.name}>{item.productName}</h2>
 
       <p className={styles.price}>$ {item.price}</p>

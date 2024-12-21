@@ -1,6 +1,9 @@
 .product {
   display: flex;
   justify-content: space-between;
+  background-color: hsl(0, 0%, 95%);
+  padding: 1em;
+  border-radius: 6px;
 }
 
 /* Styling the progress element */
@@ -65,11 +68,15 @@
 }
 
 .name {
+  display: flex;
+  align-items: center;
   width: 40%;
   font-weight: 400;
 }
 
 .price {
+  display: flex;
+  align-items: center;
   width: 30%;
 }
 

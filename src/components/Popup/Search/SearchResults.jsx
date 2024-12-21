@@ -81,12 +81,7 @@ function SearchResults({ list }) {
           ) : (
             <ul className={styles.results}>
               {list.map((item, i) => (
-                <SearchResult
-                  name={item.productName}
-                  code={item.code}
-                  price={item.price}
-                  key={i}
-                />
+                <SearchResult item={item} key={i} />
               ))}
             </ul>
           )}

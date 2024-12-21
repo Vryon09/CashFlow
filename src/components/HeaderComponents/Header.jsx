@@ -19,9 +19,6 @@ function Header() {
         <li>
           <NavLink to="/Reports">Reports</NavLink>
         </li>
-        <li>
-          <NavLink to="/Settings">Settings</NavLink>
-        </li>
       </ul>
       <UserProfile />
     </div>

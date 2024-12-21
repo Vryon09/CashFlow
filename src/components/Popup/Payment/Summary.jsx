@@ -3,7 +3,8 @@ import PaymentList from "./PaymentList";
 import styles from "./Summary.module.css";
 
 function Summary() {
-  const { paymentList, dispatch, saleTotal } = useItems();
+  const { paymentList, dispatch, saleTotal, scannedItems, products } =
+    useItems();
 
   const paymentTotal = paymentList.reduce((acc, curr) => {
     acc += curr.amount;
@@ -13,6 +14,33 @@ function Summary() {
   const remaining = saleTotal - paymentTotal;
 
   function handleProceed() {
+    const outOfStockItems = scannedItems
+      .map((item) => {
+        const curr = products.find((product) => product.code === item.code);
+
+        return {
+          productName: item.productName,
+          itemQuantity: item.quantity,
+          itemStock: curr.currentStock,
+          excess: item.quantity - curr.currentStock,
+        };
+      })
+      .filter((item) => item.excess > 0);
+
+    if (outOfStockItems.length > 0) {
+      outOfStockItems.forEach((item) =>
+        alert(
+          `${item.productName} currently has only ${
+            item.itemStock
+          } units in stock. Your order exceeds the available quantity by ${
+            item.itemQuantity - item.itemStock
+          }.`
+        )
+      );
+
+      return;
+    }
+
     if (remaining > 0) {
       alert("Customer payment is not enough");
       return;

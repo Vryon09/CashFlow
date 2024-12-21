@@ -21,4 +21,5 @@ export const initialState = {
   supervisorCode: "qwerty",
   previousTransactions: [],
   selectedCategory: "All",
+  inventoryInput: "",
 };

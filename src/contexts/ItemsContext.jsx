@@ -126,6 +126,8 @@ function reducer(state, action) {
       return { ...state, selectedCategory: action.payload };
     case "updateStocks":
       return handleStocks(state);
+    case "setInventoryInput":
+      return { ...state, inventoryInput: action.payload };
     default:
       throw new Error("Unknown type");
   }
@@ -160,6 +162,37 @@ function ItemsProvider({ children }) {
     ? vatTotal + rawTotal - discount
     : vatTotal + rawTotal;
 
+  const totalTrans = state.previousTransactions.map((trans) => {
+    const discount = trans.appliedDiscount?.type;
+    const sel = trans.scannedItems.find(
+      (item) => item.code === trans.selectedItem
+    );
+    const total = trans.scannedItems.reduce(
+      (acc, curr) => (acc += curr.price * curr.quantity),
+      0
+    );
+
+    const totalVat = total * 0.12;
+
+    const ifSel = (
+      total +
+      totalVat -
+      sel.price * sel.quantity * +`0.${trans.appliedDiscount?.percentage}`
+    ).toFixed(1);
+
+    const ifN = (
+      total +
+      totalVat -
+      total * +`0.${trans.appliedDiscount?.percentage}`
+    ).toFixed(1);
+
+    return discount === "selected"
+      ? +ifSel
+      : discount === "all"
+      ? +ifN
+      : total + totalVat;
+  });
+
   return (
     <ItemsContext.Provider
       value={{
@@ -170,6 +203,7 @@ function ItemsProvider({ children }) {
         rawTotal,
         vatTotal,
         dispatch,
+        totalTrans,
       }}
     >
       {children}
