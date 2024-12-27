@@ -45,7 +45,7 @@ function Summary() {
       alert("Customer payment is not enough");
       return;
     }
-
+    // dispatch({ type: "addMethodTotal" });
     dispatch({
       type: "proceedPayment",
       payload: remaining < 0 ? Math.abs(remaining) : 0,

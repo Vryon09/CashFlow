@@ -6,6 +6,11 @@ import {
   changeQuantity,
   productSearch,
   handleStocks,
+  handlePaymentMethodTotal,
+  getPaymentList,
+  distributeCategorySales,
+  getDayName,
+  getCurrentDate,
 } from "./HelperFunctions";
 
 const ItemsContext = createContext();
@@ -21,6 +26,7 @@ function reducer(state, action) {
     previousTransactions,
     selectedItem,
     selectedCategory,
+    prevPayments,
   } = state;
 
   //The discount should be in the context not in the ui logic, it can't be use in other components if it is not a state
@@ -59,6 +65,25 @@ function reducer(state, action) {
         ],
       };
     case "proceedPayment":
+      let total = scannedItems.reduce(
+        (acc, curr) => (acc += curr.price * curr.quantity),
+        0
+      );
+
+      const selItem = scannedItems.find((item) => item.code === selectedItem);
+
+      const discount =
+        appliedDiscount?.type === "selected"
+          ? (selItem.price * selItem.quantity * appliedDiscount.percentage) /
+            100
+          : appliedDiscount?.type === "all"
+          ? total * (appliedDiscount.percentage / 100)
+          : 0;
+
+      total = total - discount + total * 0.12;
+
+      // console.log(total);
+
       return {
         ...state,
         // scannedItems: [],
@@ -67,7 +92,14 @@ function reducer(state, action) {
         // selectedItem: null,
         previousTransactions: [
           ...previousTransactions,
-          { scannedItems, appliedDiscount, selectedItem },
+          {
+            scannedItems,
+            appliedDiscount,
+            selectedItem,
+            paymentList,
+            day: new Date("December 27, 2024"),
+            total,
+          },
         ],
       };
     case "deletePayment":
@@ -204,6 +236,10 @@ function ItemsProvider({ children }) {
         vatTotal,
         dispatch,
         totalTrans,
+        handlePaymentMethodTotal,
+        distributeCategorySales,
+        getDayName,
+        getCurrentDate,
       }}
     >
       {children}

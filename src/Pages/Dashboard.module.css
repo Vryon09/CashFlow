@@ -1,3 +1,33 @@
 .container {
   height: 100dvh;
 }
+
+.charts {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  padding: 2em 0;
+}
+
+.barCharts {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.barCharts > * {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.lineCharts {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.totals {
+  display: flex;
+  justify-content: space-between;
+}
