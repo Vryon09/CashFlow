@@ -2,9 +2,12 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Cell,
   Legend,
   Line,
   LineChart,
+  Pie,
+  PieChart,
   Tooltip,
   XAxis,
   YAxis,
@@ -13,6 +16,7 @@ import Header from "../components/HeaderComponents/Header";
 import styles from "./Dashboard.module.css";
 import { useItems } from "../contexts/ItemsContext";
 import { useEffect, useState } from "react";
+import { productCategories } from "../InitialData/productCategories";
 
 function Dashboard() {
   const [salesByDay, setSalesByDay] = useState([
@@ -27,13 +31,14 @@ function Dashboard() {
 
   const [dailySales, setDailySales] = useState([]);
   const [paymentDistribution, setPaymentDistribution] = useState([]);
+  const [categoryDistribution, setCategoryDistribution] = useState([]);
 
   const {
-    prevPayments,
     handlePaymentMethodTotal,
     previousTransactions,
     getDayName,
     getCurrentDate,
+    products,
   } = useItems();
 
   useEffect(() => {
@@ -103,11 +108,52 @@ function Dashboard() {
         return { date, ...paymentDistribution };
       });
     });
-  }, [previousTransactions]);
+  }, [previousTransactions, getCurrentDate]);
 
   //only 5 datas should be displayed
 
   //change the line chart data into total sales not amount of payment guest's paid
+
+  useEffect(() => {
+    setCategoryDistribution(() => {
+      const onlyCategories = productCategories.filter(
+        (category) => category !== "All"
+      );
+
+      const catDis = onlyCategories.map((category) => {
+        const distributedCategory = products
+          .filter((product) => product.category === category)
+          .reduce((acc, curr) => {
+            acc += curr.stock - curr.currentStock;
+
+            return acc;
+          }, 0);
+
+        return { category, sales: distributedCategory };
+      });
+
+      return catDis.filter((cat) => cat.sales !== 0);
+    });
+  }, [products]);
+
+  const COLORS = [
+    "#B821CF",
+    "#8AB913",
+    "#F38469",
+    "#AC4F6F",
+    "#5B431A",
+    "#41F68C",
+    "#D6CF85",
+    "#B21B2A",
+    "#ED113B",
+    "#560957",
+    "#1CB17C",
+    "#B1042E",
+    "#5FFE24",
+    "#229751",
+    "#63F284",
+    "#CCBAF8",
+  ];
 
   return (
     <div className={styles.container}>
@@ -178,8 +224,27 @@ function Dashboard() {
             <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
-            <Line type="monotone" dataKey="total" stroke="#8884d8" />
+            <Line type="monotone" dataKey="total" stroke="#000" />
           </LineChart>
+        </div>
+        <div className={styles.pieCharts}>
+          <h3>Category Distribution</h3>
+          <PieChart width={730} height={250}>
+            <Pie
+              data={categoryDistribution}
+              dataKey="sales"
+              nameKey="category"
+              cx="50%"
+              cy="50%"
+              outerRadius={100}
+              label={({ category }) => category}
+            >
+              {categoryDistribution.map((_, i) => (
+                <Cell key={i} fill={COLORS[i]} />
+              ))}
+            </Pie>
+            <Tooltip />
+          </PieChart>
         </div>
       </div>
     </div>
