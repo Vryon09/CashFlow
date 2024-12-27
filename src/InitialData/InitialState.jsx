@@ -2,24 +2,31 @@ import { initialDiscounts } from "./initialDiscounts";
 import { products } from "./products";
 
 export const initialState = {
-  products,
+  // Datas
   scannedItems: [],
+  previousTransactions: [],
+  searchResults: [],
+  paymentList: [],
+  suspendedTransaction: {},
+  change: 0,
+
+  //Selected Data
+  selectedItem: null,
+  selectedDiscount: null,
+  appliedDiscount: null,
+  openedModal: null,
+  selectedCategory: "All",
+
+  // Inputs
   itemInput: "",
   quantityInput: "",
   paymentInput: "",
-  selectedItem: null,
-  searchResults: [],
-  paymentList: [],
-  change: 0,
-  selectedDiscount: null,
-  appliedDiscount: null,
-  discounts: initialDiscounts,
-  suspendedTransaction: {},
-  initialQuantity: 1,
-  openedModal: null,
-  supervisorCodeInput: "",
-  supervisorCode: "qwerty",
-  previousTransactions: [],
-  selectedCategory: "All",
   inventoryInput: "",
+  supervisorCodeInput: "",
+
+  // Utility
+  products,
+  discounts: initialDiscounts,
+  initialQuantity: 1,
+  supervisorCode: "qwerty",
 };

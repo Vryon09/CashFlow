@@ -82,8 +82,6 @@ function reducer(state, action) {
 
       total = total - discount + total * 0.12;
 
-      // console.log(total);
-
       return {
         ...state,
         // scannedItems: [],
@@ -97,7 +95,7 @@ function reducer(state, action) {
             appliedDiscount,
             selectedItem,
             paymentList,
-            day: new Date("December 27, 2024"),
+            day: new Date(),
             total,
           },
         ],
