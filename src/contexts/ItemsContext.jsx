@@ -1,4 +1,4 @@
-import { useContext, createContext, useReducer } from "react";
+import { useContext, createContext, useReducer, useEffect } from "react";
 import { initialState } from "../InitialData/InitialState";
 import {
   addItem,
@@ -7,8 +7,6 @@ import {
   productSearch,
   handleStocks,
   handlePaymentMethodTotal,
-  getPaymentList,
-  distributeCategorySales,
   getDayName,
   getCurrentDate,
 } from "./HelperFunctions";
@@ -26,7 +24,6 @@ function reducer(state, action) {
     previousTransactions,
     selectedItem,
     selectedCategory,
-    prevPayments,
   } = state;
 
   //The discount should be in the context not in the ui logic, it can't be use in other components if it is not a state
@@ -166,6 +163,28 @@ function reducer(state, action) {
 function ItemsProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    localStorage.setItem("scannedItems", JSON.stringify(state.scannedItems));
+  }, [state.scannedItems]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "previousTransactions",
+      JSON.stringify(state.previousTransactions)
+    );
+  }, [state.previousTransactions]);
+
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(state.products));
+  }, [state.products]);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "suspendedTransaction",
+      JSON.stringify(state.suspendedTransaction)
+    );
+  }, [state.suspendedTransaction]);
+
   const selected = state.scannedItems.find(
     (item) => state.selectedItem === item.code
   );
@@ -192,36 +211,36 @@ function ItemsProvider({ children }) {
     ? vatTotal + rawTotal - discount
     : vatTotal + rawTotal;
 
-  const totalTrans = state.previousTransactions.map((trans) => {
-    const discount = trans.appliedDiscount?.type;
-    const sel = trans.scannedItems.find(
-      (item) => item.code === trans.selectedItem
-    );
-    const total = trans.scannedItems.reduce(
-      (acc, curr) => (acc += curr.price * curr.quantity),
-      0
-    );
+  // const totalTrans = state.previousTransactions.map((trans) => {
+  //   const discount = trans.appliedDiscount?.type;
+  //   const sel = trans.scannedItems.find(
+  //     (item) => item.code === trans.selectedItem
+  //   );
+  //   const total = trans.scannedItems.reduce(
+  //     (acc, curr) => (acc += curr.price * curr.quantity),
+  //     0
+  //   );
 
-    const totalVat = total * 0.12;
+  //   const totalVat = total * 0.12;
 
-    const ifSel = (
-      total +
-      totalVat -
-      sel.price * sel.quantity * +`0.${trans.appliedDiscount?.percentage}`
-    ).toFixed(1);
+  //   const ifSel = (
+  //     total +
+  //     totalVat -
+  //     sel.price * sel.quantity * +`0.${trans.appliedDiscount?.percentage}`
+  //   ).toFixed(1);
 
-    const ifN = (
-      total +
-      totalVat -
-      total * +`0.${trans.appliedDiscount?.percentage}`
-    ).toFixed(1);
+  //   const ifN = (
+  //     total +
+  //     totalVat -
+  //     total * +`0.${trans.appliedDiscount?.percentage}`
+  //   ).toFixed(1);
 
-    return discount === "selected"
-      ? +ifSel
-      : discount === "all"
-      ? +ifN
-      : total + totalVat;
-  });
+  //   return discount === "selected"
+  //     ? +ifSel
+  //     : discount === "all"
+  //     ? +ifN
+  //     : total + totalVat;
+  // });
 
   return (
     <ItemsContext.Provider
@@ -233,9 +252,8 @@ function ItemsProvider({ children }) {
         rawTotal,
         vatTotal,
         dispatch,
-        totalTrans,
+        // totalTrans,
         handlePaymentMethodTotal,
-        distributeCategorySales,
         getDayName,
         getCurrentDate,
       }}

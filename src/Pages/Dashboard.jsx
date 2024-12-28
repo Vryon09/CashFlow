@@ -17,21 +17,16 @@ import styles from "./Dashboard.module.css";
 import { useItems } from "../contexts/ItemsContext";
 import { useEffect, useState } from "react";
 import { productCategories } from "../InitialData/productCategories";
+import { initialSalesByDay } from "../InitialData/initialSalesByDay";
 
-function Dashboard() {
-  const [salesByDay, setSalesByDay] = useState([
-    { day: "Monday", sales: 0 },
-    { day: "Tuesday", sales: 0 },
-    { day: "Wednesday", sales: 0 },
-    { day: "Thursday", sales: 0 },
-    { day: "Friday", sales: 0 },
-    { day: "Saturday", sales: 0 },
-    { day: "Sunday", sales: 0 },
-  ]);
-
+function Dashboard({
+  salesByDay,
+  setSalesByDay,
+  categoryDistribution,
+  setCategoryDistribution,
+}) {
   const [dailySales, setDailySales] = useState([]);
   const [paymentDistribution, setPaymentDistribution] = useState([]);
-  const [categoryDistribution, setCategoryDistribution] = useState([]);
 
   const {
     handlePaymentMethodTotal,
@@ -41,18 +36,20 @@ function Dashboard() {
     products,
   } = useItems();
 
+  //Sales by day
   useEffect(() => {
-    setSalesByDay((sales) =>
-      sales.map((sale) => {
+    setSalesByDay(() =>
+      initialSalesByDay.map((sale) => {
         const totalByDay = previousTransactions
-          .filter((trans) => sale.day === getDayName(trans.day))
+          .filter((trans) => sale.day === getDayName(new Date(trans.day)))
           .reduce((acc, curr) => (acc += curr.total), 0);
 
-        return { ...sale, sales: totalByDay };
+        return { day: sale.day, sales: totalByDay };
       })
     );
-  }, [previousTransactions, getDayName]);
+  }, [previousTransactions, getDayName, setSalesByDay]);
 
+  //Daily sales summary
   useEffect(() => {
     setDailySales(() => {
       const dates = previousTransactions.map((trans) =>
@@ -73,8 +70,7 @@ function Dashboard() {
     });
   }, [previousTransactions, getCurrentDate]);
 
-  //convert payment data into state
-
+  //Payment Distribution
   useEffect(() => {
     setPaymentDistribution(() => {
       const dates = previousTransactions.map((trans) =>
@@ -114,6 +110,7 @@ function Dashboard() {
 
   //change the line chart data into total sales not amount of payment guest's paid
 
+  //Category Distribution
   useEffect(() => {
     setCategoryDistribution(() => {
       const onlyCategories = productCategories.filter(
@@ -134,7 +131,7 @@ function Dashboard() {
 
       return catDis.filter((cat) => cat.sales !== 0);
     });
-  }, [products]);
+  }, [products, setCategoryDistribution]);
 
   const COLORS = [
     "#B821CF",
@@ -229,7 +226,7 @@ function Dashboard() {
         </div>
         <div className={styles.pieCharts}>
           <h3>Category Distribution</h3>
-          <PieChart width={730} height={250}>
+          <PieChart width={730} height={300}>
             <Pie
               data={categoryDistribution}
               dataKey="sales"
@@ -252,3 +249,7 @@ function Dashboard() {
 }
 
 export default Dashboard;
+
+//Reports
+//save necessary datas into local storage
+//auth, sign up log in logout feature

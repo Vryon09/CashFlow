@@ -1,3 +1,25 @@
 .container {
   height: 100dvh;
 }
+
+.salesByDayContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em 0;
+  height: 90%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.salesByDay {
+  height: 95%;
+  width: 45%;
+  background-color: hsl(0, 0%, 90%);
+  border: 1px solid hsl(0, 0%, 75%);
+}
+
+.header {
+  background-color: hsl(0, 0%, 90%);
+  border: 1px solid black;
+}

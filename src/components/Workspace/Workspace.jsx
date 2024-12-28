@@ -23,13 +23,14 @@ function Workspace() {
         <QuantityModal productName={itemSelected.productName} />
       )}
       {openedModal === "searchModal" && <SearchResults list={searchResults} />}
-      {openedModal === "productsModal" && <SearchResults list={products} />}
+      {openedModal === "productsModal" && (
+        <SearchResults list={searchResults} />
+      )}
       {openedModal === "removeConfirmation" && <RemoveConfirmation />}
       {openedModal === "paymentModal" && <Payment />}
       {openedModal === "discountModal" && <Discount />}
       {openedModal === "voidModal" && <Void />}
       {openedModal === "receiptModal" && <Receipt />}
-      {/* <Receipt /> */}
     </div>
   );
 }

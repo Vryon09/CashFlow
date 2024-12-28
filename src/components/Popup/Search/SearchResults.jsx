@@ -1,4 +1,5 @@
 import { useItems } from "../../../contexts/ItemsContext";
+import { productCategories } from "../../../InitialData/productCategories";
 import Modal from "../Modal/Modal";
 import SearchResult from "./SearchResult";
 import styles from "./SearchResults.module.css";
@@ -8,26 +9,6 @@ const style = {
   width: "70%",
   height: "90dvh",
 };
-
-const productCategories = [
-  "All",
-  "Fruits",
-  "Dairy",
-  "Bakery",
-  "Grains",
-  "Baking Supplies",
-  "Beverages",
-  "Spreads",
-  "Snacks",
-  "Pantry",
-  "Meat",
-  "Frozen Foods",
-  "Condiments",
-  "Personal Care",
-  "Household",
-  "Canned Goods",
-  "Ready Meals",
-];
 
 function SearchResults({ list }) {
   const { initialQuantity, dispatch, selectedCategory } = useItems();

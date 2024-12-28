@@ -13,7 +13,7 @@ export const productCategories = [
   "Frozen Foods",
   "Condiments",
   "Personal Care",
-  "Household",
-  "Canned Goods",
+  // "Household",
+  // "Canned Goods",
   "Ready Meals",
 ];
