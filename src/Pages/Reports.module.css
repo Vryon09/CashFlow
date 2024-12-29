@@ -2,24 +2,54 @@
   height: 100dvh;
 }
 
-.salesByDayContainer {
+.reportsContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 2em 0;
+  gap: 2em;
+}
+
+.topContainer {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 1em 0;
   height: 90%;
   width: 70%;
   margin: 0 auto;
 }
 
-.salesByDay {
+.topReport {
   height: 95%;
   width: 45%;
-  background-color: hsl(0, 0%, 90%);
-  border: 1px solid hsl(0, 0%, 75%);
 }
 
 .header {
   background-color: hsl(0, 0%, 90%);
-  border: 1px solid black;
+}
+
+.bottomContainer {
+  display: flex;
+}
+
+.paymentSummary {
+  width: 50%;
+  margin: 0 auto;
+  border: 1px solid hsl(0, 0%, 70%);
+  padding: 1em;
+}
+
+.paymentHeader {
+  font-size: 1.5rem;
+  margin-bottom: 1em;
+}
+
+.summaries {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.grandTotal {
+  font-size: 1.2rem;
+  font-weight: 500;
 }

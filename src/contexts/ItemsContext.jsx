@@ -94,6 +94,7 @@ function reducer(state, action) {
             paymentList,
             day: new Date(),
             total,
+            change: action.payload,
           },
         ],
       };
