@@ -31,9 +31,10 @@ function SearchForm() {
       />
       <button
         className={styles.btn}
-        onClick={() =>
-          dispatch({ type: "openModal", payload: "productsModal" })
-        }
+        onClick={() => {
+          dispatch({ type: "productSearch" });
+          dispatch({ type: "openModal", payload: "searchModal" });
+        }}
       >
         Products
       </button>

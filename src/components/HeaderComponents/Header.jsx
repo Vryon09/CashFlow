@@ -2,7 +2,7 @@ import Logo from "./Logo";
 import UserProfile from "./UserProfile";
 import styles from "./Header.module.css";
 import { NavLink } from "react-router-dom";
-function Header() {
+function Header({ activeUser }) {
   return (
     <div className={styles.header}>
       <Logo />
@@ -20,7 +20,7 @@ function Header() {
           <NavLink to="/Reports">Reports</NavLink>
         </li>
       </ul>
-      <UserProfile />
+      <UserProfile activeUser={activeUser} />
     </div>
   );
 }

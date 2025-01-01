@@ -5,17 +5,27 @@ import Dashboard from "./Pages/Dashboard";
 import Inventory from "./Pages/Inventory";
 import Reports from "./Pages/Reports";
 import { useState } from "react";
+import AuthPage from "./Pages/AuthPage";
+import Header from "./components/HeaderComponents/Header";
 
 function App() {
   const [salesByDay, setSalesByDay] = useState([]);
   const [categoryDistribution, setCategoryDistribution] = useState([]);
+  const [activeUser, setActiveUser] = useState("");
 
   return (
     <div>
       <ItemsProvider>
         <BrowserRouter basename="/CashFlow/">
           <Routes>
-            <Route index element={<MainScreen />} />
+            <Route
+              index={activeUser}
+              element={<MainScreen activeUser={activeUser} />}
+            />
+            <Route
+              index={!activeUser}
+              element={<AuthPage setActiveUser={setActiveUser} />}
+            />
             <Route
               path="/Dashboard"
               element={
@@ -24,10 +34,14 @@ function App() {
                   setSalesByDay={setSalesByDay}
                   categoryDistribution={categoryDistribution}
                   setCategoryDistribution={setCategoryDistribution}
+                  activeUser={activeUser}
                 />
               }
             />
-            <Route path="/Inventory" element={<Inventory />} />
+            <Route
+              path="/Inventory"
+              element={<Inventory activeUser={activeUser} />}
+            />
             <Route
               path="/Reports"
               element={
@@ -36,6 +50,7 @@ function App() {
                   setSalesByDay={setSalesByDay}
                   categoryDistribution={categoryDistribution}
                   setCategoryDistribution={setCategoryDistribution}
+                  activeUser={activeUser}
                 />
               }
             />

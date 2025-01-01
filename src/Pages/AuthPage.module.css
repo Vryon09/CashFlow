@@ -1,0 +1,58 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85dvh;
+  /* background-color: blueviolet; */
+}
+
+.authContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+  width: 30%;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.logo {
+  font-size: 3rem;
+}
+
+.logop {
+  letter-spacing: 4px;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+.inputs label {
+  font-size: 1.25rem;
+  margin-bottom: 0.25em;
+  font-weight: 400;
+}
+
+.inputs input {
+  font-size: 1.75rem;
+  padding: 0.25em;
+  margin-bottom: 0.5em;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.buttons button {
+  font-size: 1rem;
+  padding: 0.5em 0.75em;
+}

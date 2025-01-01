@@ -1,9 +1,9 @@
 import styles from "./UserProfile.module.css";
 
-function UserProfile() {
+function UserProfile({ activeUser }) {
   return (
     <div className={styles.container}>
-      <p>User: Vryon Antonio</p>
+      <p>User: {activeUser}</p>
     </div>
   );
 }

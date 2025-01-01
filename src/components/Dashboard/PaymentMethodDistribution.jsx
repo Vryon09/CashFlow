@@ -12,10 +12,44 @@ import {
 
 function PaymentMethodDistribution({ chartStyle, labelStyle, totalStyle }) {
   const [paymentDistribution, setPaymentDistribution] = useState([]);
-  const { handlePaymentMethodTotal, previousTransactions, getCurrentDate } =
-    useItems();
+  const { previousTransactions, getCurrentDate } = useItems();
 
   //Payment Distribution
+  // useEffect(() => {
+  //   setPaymentDistribution(() => {
+  //     const dates = previousTransactions.map((trans) =>
+  //       getCurrentDate(trans.day)
+  //     );
+
+  //     const uniqueDates = Array.from(new Set(dates));
+
+  //     return uniqueDates.map((date) => {
+  //       const paymentDistribution = previousTransactions
+  //         .filter((trans) => getCurrentDate(trans.day) === date)
+  //         .reduce(
+  //           (acc, curr) => {
+  //             const cash = curr.paymentList.reduce((acc, curr) => {
+  //               if (curr.method === "Cash") acc += curr.amount;
+  //               return acc;
+  //             }, 0);
+  //             const card = curr.paymentList.reduce((acc, curr) => {
+  //               if (curr.method === "Card") acc += curr.amount;
+
+  //               return acc;
+  //             }, 0);
+
+  //             acc.cash += cash;
+  //             acc.card += card;
+  //             return acc;
+  //           },
+  //           { cash: 0, card: 0 }
+  //         );
+
+  //       return { date, ...paymentDistribution };
+  //     });
+  //   });
+  // }, [previousTransactions, getCurrentDate]);
+
   useEffect(() => {
     setPaymentDistribution(() => {
       const dates = previousTransactions.map((trans) =>
@@ -25,28 +59,18 @@ function PaymentMethodDistribution({ chartStyle, labelStyle, totalStyle }) {
       const uniqueDates = Array.from(new Set(dates));
 
       return uniqueDates.map((date) => {
-        const paymentDistribution = previousTransactions
-          .filter((trans) => getCurrentDate(trans.day) === date)
-          .reduce(
-            (acc, curr) => {
-              const cash = curr.paymentList.reduce((acc, curr) => {
-                if (curr.method === "Cash") acc += curr.amount;
-                return acc;
-              }, 0);
-              const card = curr.paymentList.reduce((acc, curr) => {
-                if (curr.method === "Card") acc += curr.amount;
+        const currDate = previousTransactions.filter(
+          (trans) => getCurrentDate(trans.day) === date
+        );
 
-                return acc;
-              }, 0);
+        const cash = currDate.filter((date) =>
+          date.paymentList.some((payment) => payment.method === "Cash")
+        ).length;
+        const card = currDate.filter((date) =>
+          date.paymentList.some((payment) => payment.method === "Card")
+        ).length;
 
-              acc.cash += cash;
-              acc.card += card;
-              return acc;
-            },
-            { cash: 0, card: 0 }
-          );
-
-        return { date, ...paymentDistribution };
+        return { date, cash, card };
       });
     });
   }, [previousTransactions, getCurrentDate]);
@@ -69,7 +93,7 @@ function PaymentMethodDistribution({ chartStyle, labelStyle, totalStyle }) {
         <Bar dataKey="card" fill="hsl(0, 0%, 0%)" />
         {/* <Bar dataKey="Total" fill="hsl(0, 0%, 20%)" /> */}
       </BarChart>
-      <div className={totalStyle}>
+      {/* <div className={totalStyle}>
         <h4>
           Cash: ${" "}
           {handlePaymentMethodTotal(previousTransactions).cash.toLocaleString()}
@@ -85,7 +109,7 @@ function PaymentMethodDistribution({ chartStyle, labelStyle, totalStyle }) {
             handlePaymentMethodTotal(previousTransactions).cash
           ).toLocaleString()}
         </h4>
-      </div>
+      </div> */}
     </div>
   );
 }

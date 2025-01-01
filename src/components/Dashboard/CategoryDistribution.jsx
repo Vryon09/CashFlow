@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Cell, Pie, PieChart, Tooltip } from "recharts";
 import { useItems } from "../../contexts/ItemsContext";
 import { productCategories } from "../../InitialData/productCategories";
+import styles from "./CategoryDistribution.module.css";
 
 function CategoryDistribution({
   chartStyle,
@@ -53,25 +54,38 @@ function CategoryDistribution({
     "#CCBAF8",
   ];
 
+  const sorted = categoryDistribution
+    .sort((a, b) => b.sales - a.sales)
+    .slice(0, 3);
+
   return (
     <div className={chartStyle}>
       <h3 className={labelStyle}>Category Distribution</h3>
-      <PieChart width={400} height={300}>
-        <Pie
-          data={categoryDistribution}
-          dataKey="sales"
-          nameKey="category"
-          cx="50%"
-          cy="50%"
-          outerRadius={100}
-          label={({ category }) => category}
-        >
-          {categoryDistribution.map((_, i) => (
-            <Cell key={i} fill={COLORS[i]} />
+      <div>
+        <PieChart width={400} height={250}>
+          <Pie
+            data={categoryDistribution}
+            dataKey="sales"
+            nameKey="category"
+            cx="50%"
+            cy="50%"
+            outerRadius={100}
+            // label={({ category }) => category}
+          >
+            {categoryDistribution.map((_, i) => (
+              <Cell key={i} fill={COLORS[i]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+        <div className={styles.top}>
+          {sorted.map((item) => (
+            <p>
+              {item.category}: {item.sales}
+            </p>
           ))}
-        </Pie>
-        <Tooltip />
-      </PieChart>
+        </div>
+      </div>
     </div>
   );
 }
