@@ -11,11 +11,12 @@ function Dashboard({
   categoryDistribution,
   setCategoryDistribution,
   activeUser,
+  setActiveUser,
 }) {
   //only 5 datas should be displayed
   return (
     <div className={styles.container}>
-      <Header activeUser={activeUser} />
+      <Header activeUser={activeUser} setActiveUser={setActiveUser} />
 
       <div className={styles.charts}>
         <div className={styles.topCharts}>

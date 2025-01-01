@@ -12,6 +12,7 @@ function Reports({
   categoryDistribution,
   setCategoryDistribution,
   activeUser,
+  setActiveUser,
 }) {
   const [payment, setPayment] = useState([]);
   const { previousTransactions, getDayName, products } = useItems();
@@ -141,7 +142,7 @@ function Reports({
 
   return (
     <div className={styles.container}>
-      <Header activeUser={activeUser} />
+      <Header activeUser={activeUser} setActiveUser={setActiveUser} />
       <div className={styles.reportsContainer}>
         <div className={styles.bottomContainer}>
           <div className={styles.paymentSummary}>

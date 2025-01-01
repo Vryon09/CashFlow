@@ -11,6 +11,12 @@ function ActionButtons() {
 
   function handleSuspend() {
     if (
+      scannedItems.length === 0 &&
+      Object.keys(suspendedTransaction).length === 0
+    )
+      return;
+
+    if (
       scannedItems.length > 0 ||
       suspendedTransaction.scannedItems.length === 0
     ) {

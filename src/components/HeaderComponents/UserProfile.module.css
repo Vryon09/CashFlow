@@ -1,4 +1,15 @@
 .container {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 1em;
   width: 30%;
-  text-align: end;
+}
+
+.logout {
+  padding: 0.65em;
+  border-radius: 0.5em;
+  border: none;
+  background-color: hsl(0, 80%, 50%);
+  color: white;
 }

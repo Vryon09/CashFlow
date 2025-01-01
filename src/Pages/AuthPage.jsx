@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./AuthPage.module.css";
+import { useNavigate } from "react-router-dom";
 
 function AuthPage({ setActiveUser }) {
   const [userInput, setUserInput] = useState("");
@@ -31,7 +32,7 @@ function AuthPage({ setActiveUser }) {
   function handleSubmit() {
     if (activeAction === "login") {
       const loggingAccount = accounts.find(
-        (acc) => acc.userName === userInput && acc.code === codeInput
+        (acc) => acc.userName === userInput.trim() && acc.code === codeInput
       );
 
       if (loggingAccount) {
@@ -61,7 +62,7 @@ function AuthPage({ setActiveUser }) {
 
       setAccounts((accs) => [
         ...accs,
-        { userName: userInput, code: codeInput },
+        { userName: userInput.trim(), code: codeInput },
       ]);
       handleClear();
     }
@@ -75,12 +76,16 @@ function AuthPage({ setActiveUser }) {
     setErrorMsg("");
   }
 
+  function handleEnter(e) {
+    if (e.key === "Enter") handleSubmit();
+  }
+
   useEffect(() => {
     localStorage.setItem("posAccounts", JSON.stringify(accounts));
   }, [accounts]);
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onKeyDown={handleEnter}>
       <div className={styles.authContainer}>
         <div className={styles.header}>
           <h1 className={styles.logo}>CashFlow</h1>

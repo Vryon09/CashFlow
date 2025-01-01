@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useItems } from "../../../contexts/ItemsContext";
 import PaymentList from "./PaymentList";
 import styles from "./Summary.module.css";
@@ -53,6 +54,20 @@ function Summary() {
     dispatch({ type: "updateStocks" });
     dispatch({ type: "openModal", payload: "receiptModal" });
   }
+
+  useEffect(() => {
+    function handleKey(e) {
+      if (e.key === "Enter") {
+        handleProceed();
+      }
+    }
+
+    window.addEventListener("keydown", handleKey);
+
+    return () => {
+      window.removeEventListener("keydown", handleKey);
+    };
+  });
 
   return (
     <div className={styles.summary}>
