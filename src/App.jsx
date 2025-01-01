@@ -6,7 +6,6 @@ import Inventory from "./Pages/Inventory";
 import Reports from "./Pages/Reports";
 import { useState } from "react";
 import AuthPage from "./Pages/AuthPage";
-import Header from "./components/HeaderComponents/Header";
 
 function App() {
   const [salesByDay, setSalesByDay] = useState([]);

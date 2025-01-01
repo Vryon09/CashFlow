@@ -7,7 +7,7 @@ function AuthPage({ setActiveUser }) {
   const [errorMsg, setErrorMsg] = useState("");
   const [accounts, setAccounts] = useState(function () {
     return (
-      JSON.parse(localStorage.getItem("accounts")) || [
+      JSON.parse(localStorage.getItem("posAccounts")) || [
         { userName: "vryon", code: "eyey" },
         { userName: "eyey", code: "vryon" },
       ]
@@ -76,7 +76,7 @@ function AuthPage({ setActiveUser }) {
   }
 
   useEffect(() => {
-    localStorage.setItem("accounts", JSON.stringify(accounts));
+    localStorage.setItem("posAccounts", JSON.stringify(accounts));
   }, [accounts]);
 
   return (
